@@ -1,0 +1,9 @@
+name: azure-azure-ssh-key
+type: terraform
+description: Module to provision azure-ssh-key on azure
+tags:
+  - tools
+  - devops
+versions: []
+cloudProvider: azure
+id: github.com/cloud-native-toolkit/terraform-azure-azure-ssh-key
