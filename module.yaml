@@ -1,4 +1,4 @@
-name: azure-azure-ssh-key
+name: azure-ssh-key
 type: terraform
 description: Module to provision an ssh key on azure
 tags:
