@@ -11,7 +11,7 @@ resource "local_file" "private_key" {
     count           = var.ssh_key == "" ? 1 : 0
 
     content         = tls_private_key.key[0].private_key_pem
-    filename        = "${var.store_path}/${var.key_name}"
+    filename        = var.store_path == "" ? "${path.cwd}/${var.key_name}" : "${path.cwd}/${var.store_path}/${var.key_name}"
     file_permission = var.file_permissions
 }
 
@@ -19,7 +19,7 @@ resource "local_file" "public_key" {
     count           = var.ssh_key == "" ? 1 : 0
     
     content         = tls_private_key.key[0].public_key_openssh
-    filename        = "${var.store_path}/${var.key_name}.pub"
+    filename        = var.store_path == "" ? "${path.cwd}/${var.key_name}.pub" : "${path.cwd}/${var.store_path}/${var.key_name}.pub"
     file_permission = var.file_permissions
 }
 

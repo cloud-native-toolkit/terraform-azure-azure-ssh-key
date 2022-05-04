@@ -13,9 +13,9 @@ variable "region" {
 }
 
 variable "store_path" {
-    description = "Path to store created key pair (default = .)"
+    description = "Offset from root path to store created key pair (default none). <path.cwd>/<store_path>/"
     type        = string
-    default     = "."
+    default     = ""
 }
 
 variable "file_permissions" {
