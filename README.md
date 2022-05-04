@@ -24,7 +24,7 @@ The module depends on the following software components:
 
 This module makes use of the output from other modules:
 
-- Azure resource group - github.com/cloud-native-toolkit/terraform-azure-resource-group
+- Azure resource group - github.com/cloud-native-toolkit/terraform-azure-resource-group >= 1.0.2
 
 ### Example usage
 
