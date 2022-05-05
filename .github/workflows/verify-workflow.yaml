@@ -20,10 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     container: quay.io/ibmgaragecloud/cli-tools:v0.15
 
+    # Test case below (azure-vpc) is the namespace to be utilized for the test. Do not change for Azure.
     strategy:
       matrix:
         testcase:
-          - azure_ssh_key
+          - azure_vpc
       fail-fast: false
 
     env:
