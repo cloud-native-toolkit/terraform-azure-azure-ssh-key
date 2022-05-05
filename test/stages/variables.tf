@@ -9,12 +9,22 @@ variable "region" {
   description = "Region/location to deploy into."
 }
 
-variable "enabled" {}
+variable "subscription_id" {
+  type        = string
+  description = "Subscription Id"
+}
 
-variable "subscription_id" {}
+variable "client_id" {
+  type        = string
+  description = "Client Id"
+}
 
-variable "client_id" {}
+variable "client_secret" {
+  type        = string
+  description = "Client secret"
+}
 
-variable "client_secret" {}
-
-variable "tenant_id" {}
+variable "tenant_id" {
+  type        = string
+  description = "Tenant Id"
+}
