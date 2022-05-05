@@ -4,13 +4,13 @@ name: Verify
 on:
   workflow_call:
     secrets:
-      TF_VAR_subscription_id:
+      AZURE_SUBSCRIPTION_ID:
         required: true
-      TF_VAR_client_id:
+      AZURE_CLIENT_ID:
         required: true
-      TF_VAR_client_secret:
+      AZURE_CLIENT_SECRET:
         required: true
-      TF_VAR_tenant_id: 
+      AZURE_TENNANT_ID: 
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -21,6 +21,7 @@ jobs:
     container: quay.io/ibmgaragecloud/cli-tools:v0.15
 
     # Test case below (azure-vpc) is the namespace to be utilized for the test. Do not change for Azure.
+    # Available environments are here - https://github.com/cloud-native-toolkit/action-module-verify/tree/main/env
     strategy:
       matrix:
         testcase:
