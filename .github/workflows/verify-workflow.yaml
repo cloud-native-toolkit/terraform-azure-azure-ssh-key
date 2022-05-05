@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         testcase:
-          - azure_vpc
+          - azure_ssh_key
       fail-fast: false
 
     env:
