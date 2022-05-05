@@ -9,8 +9,6 @@ variable "region" {
   description = "Region/location to deploy into."
 }
 
-variable "enabled" {}
-
 variable "subscription_id" {}
 
 variable "client_id" {}
