@@ -4,22 +4,22 @@ name: Verify
 on:
   workflow_call:
     secrets: []
-#      TF_VAR_subscription_id:
-#        required: true
-#      TF_VAR_client_id:
-#        required: true
-#      TF_VAR_client_secret:
-#        required: true
-#      TF_VAR_tenant_id: 
-#        required: true
-#      AZURE_SUBSCRIPTION_ID:
-#        required: true
-#      AZURE_CLIENT_ID:
-#        required: true
-#      AZURE_CLIENT_SECRET:
-#        required: true
-#      AZURE_TENANT_ID:
-#        required: true
+      TF_VAR_subscription_id:
+        required: true
+      TF_VAR_client_id:
+        required: true
+      TF_VAR_client_secret:
+        required: true
+      TF_VAR_tenant_id: 
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
+      AZURE_CLIENT_ID:
+        required: true
+      AZURE_CLIENT_SECRET:
+        required: true
+      AZURE_TENANT_ID:
+        required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
