@@ -67,8 +67,6 @@ This workflow runs for pull requests against the `main` branch and when changes 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 ```
 
 The `verify` job checks out the module and deploys the terraform template in the `test/stages` folder. (More on the details of this folder in a later section.) It applies the testcase(s) listed in the `strategy.matrix.testcase` variable against the terraform template to validate the module logic. It then runs the `.github/scripts/validate-deploy.sh` to verify that everything was deployed successfully. **Note:** This script should be customized to validate the resources provisioned by the module. After the deploy is completed, the destroy logic is also applied to validate the destroy logic and to clean up after the test. The parameters for the test case are defined in https://github.com/cloud-native-toolkit/action-module-verify/tree/main/env. New test cases can be added via pull request.
@@ -170,7 +168,10 @@ The `test/stages` folder contains the terraform template needed to execute the m
 
 1. Fork the module git repository into your personal org
 2. In your forked repository, add the following secrets (note: if you are working in the repo in the Cloud Native Toolkit, these secrets are already available):
-  - __IBMCLOUD_API_KEY__ - an API Key to an IBM Cloud account where you can provision the test instances of any resources you need
+  - __AZURE_SUBSCRIPTION_ID__ - the Azure subscription where you can provision the test instances of any resources you need
+  - __AZURE_CLIENT_ID__ - the Azure Service Principal id to be used for testing
+  - __AZURE_CLIENT_SECRET__ - the secret (like password) of the Azure Service Principal id to be used for testing
+  - __AZURE_TENANT_ID__ - the Azure tenant 
 3. Create a branch in the forked repository where you will do your work
 4. Create a [draft pull request](https://github.blog/2019-02-14-introducing-draft-pull-requests/) in the Cloud Native Toolkit repository for your branch as soon as you push your first change. Add labels to the pull request for the type of change (`enhancement`, `bug`, `chore`) and the type of release (`major`, `minor`, `patch`) to impact the generated release documentation.
 5. When the changes are completed and the automated checks are running successfully, mark the pull request as "Ready to review".
