@@ -6,3 +6,13 @@ output "id" {
       azurerm_ssh_public_key.ssh_key
     ]
 }
+
+output "pub_key" {
+  description = "File location of public key"
+
+  value = data.local_file.pub_key.filename
+
+  depends_on = [
+    data.local_file.pub_key
+  ]
+}
