@@ -8,6 +8,16 @@ output "id" {
 }
 
 output "pub_key" {
+  description = "Public key"
+
+  value = data.local_file.pub_key.content
+
+  depends_on = [
+    data.local_file.pub_key
+  ]
+}
+
+output "pub_key_file" {
   description = "File location of public key"
 
   value = data.local_file.pub_key.filename
