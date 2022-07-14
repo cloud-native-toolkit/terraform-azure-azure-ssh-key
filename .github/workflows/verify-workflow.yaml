@@ -18,7 +18,7 @@ jobs:
   verify:
     if: ${{ !contains( github.event.pull_request.labels.*.name, 'skip ci' ) }}
     runs-on: ubuntu-latest
-    container: quay.io/ibmgaragecloud/cli-tools:v0.15
+    container: quay.io/cloudnativetoolkit/cli-tools:v1.1-v1.8.2
 
     # Test case below (azure-vpc) is the namespace to be utilized for the test. Do not change for Azure.
     # Available environments are here - https://github.com/cloud-native-toolkit/action-module-verify/tree/main/env

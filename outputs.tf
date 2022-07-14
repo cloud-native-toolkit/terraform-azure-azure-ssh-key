@@ -26,3 +26,8 @@ output "pub_key_file" {
     data.local_file.pub_key
   ]
 }
+
+output "path" {
+  description = "Path to where keys are stored in filesystem"
+  value = local.store_path
+}
