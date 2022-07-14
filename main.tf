@@ -1,3 +1,7 @@
+locals {
+  store_path = var.store_path == "" ? "${path.cwd}" : "${var.store_path}"
+}
+
 
 resource "tls_private_key" "key" {
     count     = var.ssh_key == "" ? 1 : 0
@@ -11,7 +15,7 @@ resource "local_file" "private_key" {
     count           = var.ssh_key == "" ? 1 : 0
 
     content         = tls_private_key.key[0].private_key_pem
-    filename        = var.store_path == "" ? "${path.cwd}/${var.key_name}" : "${path.root}/${var.store_path}/${var.key_name}"
+    filename        = "${local.store_path}/${var.key_name}"
     file_permission = var.file_permissions
 }
 
@@ -19,7 +23,7 @@ resource "local_file" "public_key" {
     count           = var.ssh_key == "" ? 1 : 0
     
     content         = tls_private_key.key[0].public_key_openssh
-    filename        = var.store_path == "" ? "${path.cwd}/${var.key_name}.pub" : "${path.root}/${var.store_path}/${var.key_name}.pub"
+    filename        = "${local.store_path}/${var.key_name}.pub"
     file_permission = var.file_permissions
 }
 
@@ -28,7 +32,7 @@ data "local_file" "pub_key" {
       local_file.public_key
     ]
 
-    filename        = var.store_path == "" ? "${path.cwd}/${var.key_name}.pub" : "${path.root}/${var.store_path}/${var.key_name}.pub"
+    filename        = "${local.store_path}/${var.key_name}.pub"
 }
 
 resource "azurerm_ssh_public_key" "ssh_key" {

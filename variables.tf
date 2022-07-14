@@ -6,14 +6,16 @@ variable "key_name" {
 
 variable "resource_group_name" {
     description = "value"
+    default = ""
 }
 
 variable "region" {
     description = "Location to store key"
+    default = ""
 }
 
 variable "store_path" {
-    description = "Offset from root path to store created key pair (default none). <path.cwd>/<store_path>/"
+    description = "Path to directory in which to store keys (will default to current working directory)"
     type        = string
     default     = ""
 }
