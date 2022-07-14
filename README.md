@@ -35,7 +35,7 @@ module "ssh_key" {
     key_name = "test-key"
     resource_group_name = module.resource_group.name
     region= module.resource_group.region
-    store_path = "artifacts"
+    store_path = "${path.cwd}/${var.path_offset}"
   
 }
 ```
