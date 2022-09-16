@@ -2,6 +2,13 @@
 variable "key_name" {
     description   = "Name to give to SSH key"
     type          = string
+    default       = ""
+}
+
+variable "name_prefix" {
+    description   = "Prefix for SSH key name (if blank, needs key_name variable defined)"
+    type          = string
+    default       = ""
 }
 
 variable "resource_group_name" {

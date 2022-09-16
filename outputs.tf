@@ -31,3 +31,11 @@ output "path" {
   description = "Path to where keys are stored in filesystem"
   value = local.store_path
 }
+
+output "name" {
+  description = "Name of the key created"
+  value = local.key_name
+  depends_on = [
+    data.local_file.pub_key
+  ]
+}

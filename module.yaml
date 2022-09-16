@@ -21,4 +21,15 @@ versions:
           output: name
       - name: region
         scope: global
+      - name: name_prefix
+        scope: global
+    outputs:
+      - name: id
+        description: "Azure vault identification of the stored key"
+      - name: pub_key
+        description: "Public key"
+      - name: pub_key_file
+        description: "File path of public key"
+      - name: name
+        description: "Name of the key"
 cloudProvider: azure
