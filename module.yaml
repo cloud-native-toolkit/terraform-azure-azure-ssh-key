@@ -21,4 +21,6 @@ versions:
           output: name
       - name: region
         scope: global
+      - name: name_prefix
+        scope: global
 cloudProvider: azure
