@@ -30,6 +30,10 @@ versions:
         description: "Public key"
       - name: pub_key_file
         description: "File path of public key"
+      - name: private_key
+        description: "Private key"
+      - name: private_key_file
+        description: "File path of the private key"
       - name: name
         description: "Name of the key"
 cloudProvider: azure
