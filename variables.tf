@@ -12,7 +12,7 @@ variable "name_prefix" {
 }
 
 variable "resource_group_name" {
-    description = "value"
+    description = "Resource group name if storing the SSH keys in Azure vault."
     default = ""
 }
 
