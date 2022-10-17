@@ -12,7 +12,7 @@ variable "name_prefix" {
 }
 
 variable "resource_group_name" {
-    description = "value"
+    description = "Resource group name if storing the SSH keys in Azure vault."
     default = ""
 }
 
@@ -27,10 +27,16 @@ variable "store_path" {
     default     = ""
 }
 
-variable "file_permissions" {
-    description = "Permissions to be set on created files (default = 0600)"
+variable "public_file_permissions" {
+    description = "Permissions to be set on public key files (default = 0600)"
     type        = string
     default     = "0600"
+}
+
+variable "private_file_permissions" {
+    description = "Permissions to be set on public key files (default = 0400)"
+    type        = string
+    default     = "0400"
 }
 
 variable "store_key_in_vault" {
