@@ -26,7 +26,7 @@ resource "local_file" "private_key" {
 
     content         = tls_private_key.key[0].private_key_pem
     filename        = local.private_key_file
-    file_permission = var.file_permissions
+    file_permission = var.private_file_permissions
 }
 
 resource "local_file" "public_key" {
@@ -34,7 +34,7 @@ resource "local_file" "public_key" {
     
     content         = tls_private_key.key[0].public_key_openssh
     filename        = local.public_key_file
-    file_permission = var.file_permissions
+    file_permission = var.public_file_permissions
 }
 
 data "local_file" "pub_key" {

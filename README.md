@@ -52,7 +52,8 @@ This module has the following input variables:
 | resource_group_name | Optional | "" | Name of the resource group if storing the SSH key in the Azure vault |
 | region | Optional | "" | Azure location if storing the SSH key in the Azure vault. |
 | store_path | Optional | CWD | Path offset from current working directory (CWD) to store keys. |
-| file_permissions | Optional | 0600 | Permissions for created key files |
+| public_file_permissions | Optional | 0600 | Permissions for created public key file |
+| private_file_permissions | Optional | 0400 | Permissions for created private key file |
 | store_key_in_vault | Optional | true | Flag to specify whether to store generated keys in Azure vault |
 | ssh_key | Optional | "" | Path to existing public key to used |
 | algorithm | Optional | RSA | Encryption algorithm to be used (RSA, ECDSA or ED25519) |
