@@ -25,6 +25,96 @@ versions:
         default: ''
         scope: global
       - name: resource_group_name
+        description: Resource group name if storing the SSH keys in Azure vault.
+        default: '""'
+        moduleRef:
+          id: resource_group
+          output: name
+      - name: region
+        description: Location to store key
+        default: '""'
+        scope: global
+      - name: store_path
+        description: >-
+          Path to directory in which to store keys (will default to current
+          working directory)
+        type: string
+        default: ''
+      - name: public_file_permissions
+        description: Permissions to be set on public key files (default = 0600)
+        type: string
+        default: '0600'
+      - name: private_file_permissions
+        description: Permissions to be set on public key files (default = 0400)
+        type: string
+        default: '0400'
+      - name: store_key_in_vault
+        description: Flag to storage the generated or supplied key in the Azure vault
+        type: bool
+        default: true
+      - name: ssh_key
+        description: >-
+          Path to existing public key to be used. Will be created if empty.
+          (Default empty string)
+        type: string
+        default: ''
+      - name: algorithm
+        description: >-
+          Algorithim to be utilized if creating a new key (RSA, ECDSA or
+          ED25519, default = RSA)
+        type: string
+        default: RSA
+      - name: rsa_bits
+        description: Number of bits to use for RSA key (default = 4096)
+        type: number
+        default: '4096'
+      - name: ecdsa_curve
+        description: >-
+          ECDSA Curve value to be utilized for ECDSA key (P224, P256, P521,
+          default = P224)
+        type: string
+        default: P224
+      - name: tags
+        description: Extra tags to be added to the Azure Vault entry (default = none)
+        type: map(string)
+        default: '{}'
+    outputs:
+      - name: id
+        description: Azure vault identification of the stored key
+      - name: pub_key
+        description: Public key
+      - name: pub_key_file
+        description: File path of public key
+      - name: private_key
+        description: Private key
+        sensitive: true
+      - name: private_key_file
+        description: File path of the private key
+      - name: path
+        description: Path to where keys are stored in filesystem
+      - name: name
+        description: Name of the key
+    version: v1.0.6
+  - platforms: []
+    providers:
+      - name: azurerm
+        source: hashicorp/azurerm
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-azure-resource-group
+            version: '>=1.0.0'
+    variables:
+      - name: key_name
+        description: Name to give to SSH key
+        type: string
+        default: ''
+      - name: name_prefix
+        description: Prefix for SSH key name (if blank, needs key_name variable defined)
+        type: string
+        default: ''
+        scope: global
+      - name: resource_group_name
         description: value
         default: '""'
         moduleRef:
